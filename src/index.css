@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 220 20% 20%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 20%;
+    --primary: 220 40% 30%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 220 15% 96%;
+    --secondary-foreground: 220 40% 30%;
+    --muted: 220 15% 96%;
+    --muted-foreground: 220 10% 50%;
+    --accent: 35 60% 55%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 15% 90%;
+    --input: 220 15% 90%;
+    --ring: 220 40% 30%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 220 20% 10%;
+    --foreground: 0 0% 95%;
+    --card: 220 20% 12%;
+    --card-foreground: 0 0% 95%;
+    --popover: 220 20% 12%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 35 60% 55%;
+    --primary-foreground: 220 20% 10%;
+    --secondary: 220 15% 18%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 220 15% 18%;
+    --muted-foreground: 220 10% 60%;
+    --accent: 35 60% 55%;
+    --accent-foreground: 220 20% 10%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 15% 20%;
+    --input: 220 15% 20%;
+    --ring: 35 60% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', Georgia, serif;
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .prose-academic {
+    @apply max-w-none;
+  }
+  .prose-academic p {
+    @apply text-muted-foreground leading-relaxed mb-4;
+  }
+  .prose-academic h1,
+  .prose-academic h2,
+  .prose-academic h3,
+  .prose-academic h4 {
+    @apply font-semibold text-foreground mb-4 mt-6;
+  }
+  .prose-academic a {
+    @apply text-primary no-underline hover:underline;
+  }
+  .prose-academic strong {
+    @apply text-foreground font-semibold;
+  }
+  .prose-academic code {
+    @apply text-accent bg-secondary px-1 py-0.5 rounded text-sm;
+  }
+}
