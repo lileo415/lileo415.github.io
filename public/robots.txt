@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lileo415.github.io/sitemap.xml
