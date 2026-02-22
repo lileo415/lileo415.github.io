@@ -74,7 +74,7 @@ const Bio = () => {
           </h2>
           <div className="prose-academic space-y-4">
             <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
-              Hi, I'm an undergraduate student currently enrolled in a joint training program between Northeastern University and the University of Auckland. My research interests focus on AI4Health, biomedical signal processing and deep learning.
+              Hi, I'm an undergraduate student currently enrolled in a joint program between Northeastern University and the University of Auckland. My research interests focus on AI4Health, biomedical signal processing and deep learning.
             </p>
           </div>
         </section>

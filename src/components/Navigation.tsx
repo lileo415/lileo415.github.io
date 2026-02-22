@@ -85,7 +85,7 @@ const Navigation = () => {
               variant="ghost"
               size="icon"
               onClick={toggleDarkMode}
-              className="rounded-full"
+              className="rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted"
             >
               {isDarkMode ? (
                 <Sun className="w-5 h-5" />
