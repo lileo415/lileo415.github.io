@@ -6,6 +6,7 @@ interface ExperienceItem {
   location?: string;
   startDate: string;
   endDate: string;
+  expected?: boolean;
   description?: string;
 }
 
@@ -45,13 +46,14 @@ const education: ExperienceItem[] = [
     title: 'BS Mathematics',
     organization: 'University of Auckland',
     startDate: '2026-07',
-    endDate: '2027-06'
+    endDate: '2027-06',
+    expected: true
   },
   {
     title: 'BS Mathematics and Applied Mathematics',
     organization: 'Northeastern University',
     startDate: '2023-09',
-    endDate: '2026-06'
+    endDate: 'Present'
   }
 ];
 
@@ -140,9 +142,19 @@ const Experience = () => {
                           {edu.organization}
                         </p>
                       </div>
-                      <div className="flex items-center gap-1.5 text-slate-500 dark:text-slate-400 text-sm whitespace-nowrap">
-                        <Calendar className="w-4 h-4" />
-                        <span>{edu.startDate} – {edu.endDate}</span>
+                      <div className="flex flex-col items-start sm:items-end gap-0.5 text-slate-500 dark:text-slate-400 text-sm">
+                        <div className="flex items-center gap-1.5 whitespace-nowrap">
+                          <Calendar className="w-4 h-4" />
+                          <span>{edu.startDate} – </span>
+                          <span className={edu.endDate === 'Present' ? 'text-sky-600 dark:text-sky-400 font-medium' : ''}>
+                            {edu.endDate}
+                          </span>
+                        </div>
+                        {edu.expected && (
+                          <span className="text-sky-600 dark:text-sky-400 font-medium text-xs">
+                            (Expected)
+                          </span>
+                        )}
                       </div>
                     </div>
                   </div>

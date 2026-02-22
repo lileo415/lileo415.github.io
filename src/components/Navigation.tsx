@@ -32,7 +32,8 @@ const Navigation = () => {
 
   const navItems = [
     { path: '/', label: 'Bio' },
-    { path: '/papers', label: 'Papers' },
+    { path: '/papers', label: 'Paper' },
+    { path: '/project', label: 'Project' },
     { path: '/experience', label: 'Experience' },
     { path: '/blog', label: 'Blog' }
   ];
@@ -45,11 +46,11 @@ const Navigation = () => {
   };
 
   return (
-    <header 
+    <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-background/80 backdrop-blur-lg border-b border-border shadow-sm' 
-          : 'bg-transparent'
+        isScrolled
+          ? 'bg-background/80 backdrop-blur-lg border-b border-border shadow-sm'
+          : 'bg-background/80 backdrop-blur-lg border-b border-border md:bg-transparent md:backdrop-blur-none md:border-none'
       }`}
     >
       <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -112,7 +113,7 @@ const Navigation = () => {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border">
+          <div className="md:hidden py-4 border-t border-border bg-background/95 backdrop-blur-lg">
             <div className="flex flex-col gap-1">
               {navItems.map((item) => (
                 <NavLink

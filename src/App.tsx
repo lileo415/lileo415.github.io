@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import Bio from './pages/Bio';
 import Papers from './pages/Papers';
+import Project from './pages/Project';
 import Experience from './pages/Experience';
 import Blog from './pages/Blog';
 import './App.css';
@@ -18,6 +19,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Bio />} />
             <Route path="/papers" element={<Papers />} />
+            <Route path="/project" element={<Project />} />
             <Route path="/experience" element={<Experience />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="*" element={<Navigate to="/" replace />} />
