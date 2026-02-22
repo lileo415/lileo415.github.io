@@ -33,9 +33,9 @@ const Navigation = () => {
   const navItems = [
     { path: '/', label: 'Bio' },
     { path: '/papers', label: 'Paper' },
-    { path: '/project', label: 'Project' },
     { path: '/experience', label: 'Experience' },
-    { path: '/blog', label: 'Blog' }
+    { path: '/blog', label: 'Blog' },
+    { path: '/project', label: 'Project' },
   ];
 
   const isActive = (path: string) => {
