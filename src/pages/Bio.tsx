@@ -11,7 +11,10 @@ const Bio = () => {
         <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start mb-16">
           <div className="flex-shrink-0">
             <Avatar className="w-40 h-40 md:w-48 md:h-48 border-4 border-primary/10">
-              <AvatarImage src="/avatar.jpg" alt="Profile" />
+              <picture>
+                <source srcSet="/avatar.webp" type="image/webp" />
+                <AvatarImage src="/avatar.jpg" alt="Dexuan Li" />
+              </picture>
               <AvatarFallback className="text-4xl bg-primary/10 text-primary">
                 DR
               </AvatarFallback>

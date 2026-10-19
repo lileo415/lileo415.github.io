@@ -3,59 +3,116 @@ import { Briefcase, Calendar, GraduationCap } from 'lucide-react';
 interface ExperienceItem {
   title: string;
   organization: string;
-  location?: string;
   startDate: string;
   endDate: string;
-  expected?: boolean;
+  supervisor?: string;
+  status?: string;
   description?: string;
 }
 
-const experiences: ExperienceItem[] = [
+const internships: ExperienceItem[] = [
   {
-    title: 'Research Assistant',
-    organization: 'Duke University',
-    startDate: '2026-01',
-    endDate: 'Present',
-    description: 'Participating in research on ways to assess the quality of ECG and PCG signals based on a novel wearable device.'
-  },
+    title: 'Algorithm Engineer Intern',
+    organization: 'Wenxin Tech',
+    startDate: '03/2024',
+    endDate: '06/2026',
+    description: 'Developed an ECG and PCG CNN-LSTM algorithm for heart disease detection and a lung sound classification algorithm based on wearable devices. Contributed to a cardiovascular medical language model using multimodal physiological signals for risk assessment and clinical decision support.'
+  }
+];
+
+const research: ExperienceItem[] = [
   {
-    title: 'Research Assistant',
-    organization: 'Shanxi Medical University',
-    startDate: '2025-09',
-    endDate: 'Present',
-    description: 'Working on statistical methods to prove the effectiveness of a novel wearable device for pneumonia screening.'
-  },
-  {
-    title: 'Research Assistant',
+    title: 'RespMIL: Multiple Instance Learning for Respiratory Sound Classification',
     organization: 'Nanjing University',
-    startDate: '2025-03',
-    endDate: '2025-08',
-    description: 'Worked on transfer learning and few-shot learning in agricultural drone scenarios.'
+    supervisor: 'Prof. Yechao Bai',
+    startDate: '02/2026',
+    endDate: '05/2026',
+    description: 'Developed a DASS-based multiple instance learning pipeline for respiratory sound classification on the ICBHI dataset. Achieved an ICBHI score of 64.77.'
   },
   {
-    title: 'Research Intern',
-    organization: 'Bayland Scientific',
-    startDate: '2024-01',
+    title: 'A Deep Learning Framework for Auxiliary Pneumonia Screening Using Lung Sounds from Wearable Device',
+    organization: 'Fudan University',
+    supervisor: 'Prof. Lei Liu',
+    startDate: '06/2026',
     endDate: 'Present',
-    description: 'Working on a novel algorithm to detect and analyse the severity of pneumonia based on respiratory sound.'
+    description: 'Developed an AI-assisted lung sound screening framework for bedside pneumonia assessment. On a private dataset of 367 recordings, the CNN-BiGRU model achieved a recording-level AUC of 0.923.'
   }
 ];
 
 const education: ExperienceItem[] = [
   {
-    title: 'BS Mathematics',
-    organization: 'University of Auckland',
-    startDate: '2026-07',
-    endDate: '2027-06',
-    expected: true
+    title: 'Bachelor of Science',
+    organization: 'Northeastern University',
+    startDate: '09/2023',
+    endDate: '06/2026',
+    description: 'Major in Mathematics and Applied Mathematics'
   },
   {
-    title: 'BS Mathematics and Applied Mathematics',
-    organization: 'Northeastern University',
-    startDate: '2023-09',
-    endDate: 'Present'
+    title: 'Bachelor of Science',
+    organization: 'University of Auckland',
+    startDate: '07/2026',
+    endDate: 'Present',
+    description: 'Major in Mathematics'
   }
 ];
+
+const Timeline = ({ items, education = false }: { items: ExperienceItem[]; education?: boolean }) => (
+  <div className="relative">
+    <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-sky-200 dark:bg-sky-800" />
+
+    <div className="space-y-8">
+      {items.map((item, index) => (
+        <div key={index} className="relative flex gap-6">
+          <div className="relative z-10 flex-shrink-0">
+            <div className="w-12 h-12 rounded-full bg-sky-100 dark:bg-sky-900 border-2 border-sky-400 dark:border-sky-500 flex items-center justify-center">
+              {education ? (
+                <GraduationCap className="w-5 h-5 text-sky-600 dark:text-sky-400" />
+              ) : (
+                <Briefcase className="w-5 h-5 text-sky-600 dark:text-sky-400" />
+              )}
+            </div>
+          </div>
+
+          <div className="flex-1 bg-white dark:bg-slate-800 rounded-xl border border-sky-100 dark:border-slate-700 shadow-sm hover:shadow-md transition-shadow p-6">
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
+              <div>
+                <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100">
+                  {item.title}
+                </h3>
+                <p className="text-sky-600 dark:text-sky-400 font-medium">
+                  {item.organization}
+                </p>
+                {item.supervisor && (
+                  <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
+                    Supervisor: {item.supervisor}
+                  </p>
+                )}
+                {item.status && (
+                  <p className="text-sm text-slate-500 dark:text-slate-400 italic mt-1">
+                    {item.status}
+                  </p>
+                )}
+              </div>
+              <div className="flex items-center gap-1.5 text-slate-500 dark:text-slate-400 text-sm whitespace-nowrap">
+                <Calendar className="w-4 h-4" />
+                <span>{item.startDate} – </span>
+                <span className={item.endDate === 'Present' ? 'text-sky-600 dark:text-sky-400 font-medium' : ''}>
+                  {item.endDate}
+                </span>
+              </div>
+            </div>
+
+            {item.description && (
+              <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
+                {item.description}
+              </p>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+);
 
 const Experience = () => {
   return (
@@ -67,101 +124,32 @@ const Experience = () => {
             Experience
           </h1>
           <p className="text-slate-500 dark:text-slate-400 text-lg">
-            My research journey and professional experience
+            My internship and research experience
           </p>
         </div>
 
-        {/* Experience Timeline */}
-        <div className="relative mb-16">
-          <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-sky-200 dark:bg-sky-800" />
+        {/* Internship Section */}
+        <section className="mb-16">
+          <h2 className="text-4xl font-bold text-slate-800 dark:text-slate-100 mb-8 text-center">
+            Internship
+          </h2>
+          <Timeline items={internships} />
+        </section>
 
-          <div className="space-y-8">
-            {experiences.map((exp, index) => (
-              <div key={index} className="relative flex gap-6">
-                <div className="relative z-10 flex-shrink-0">
-                  <div className="w-12 h-12 rounded-full bg-sky-100 dark:bg-sky-900 border-2 border-sky-400 dark:border-sky-500 flex items-center justify-center">
-                    <Briefcase className="w-5 h-5 text-sky-600 dark:text-sky-400" />
-                  </div>
-                </div>
-
-                <div className="flex-1 bg-white dark:bg-slate-800 rounded-xl border border-sky-100 dark:border-slate-700 shadow-sm hover:shadow-md transition-shadow p-6">
-                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
-                    <div>
-                      <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100">
-                        {exp.title}
-                      </h3>
-                      <p className="text-sky-600 dark:text-sky-400 font-medium">
-                        {exp.organization}
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-1.5 text-slate-500 dark:text-slate-400 text-sm whitespace-nowrap">
-                      <Calendar className="w-4 h-4" />
-                      <span>{exp.startDate} – </span>
-                      <span className={exp.endDate === 'Present' ? 'text-sky-600 dark:text-sky-400 font-medium' : ''}>
-                        {exp.endDate}
-                      </span>
-                    </div>
-                  </div>
-
-                  {exp.description && (
-                    <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
-                      {exp.description}
-                    </p>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        {/* Research Section */}
+        <section className="mb-16">
+          <h2 className="text-4xl font-bold text-slate-800 dark:text-slate-100 mb-8 text-center">
+            Research
+          </h2>
+          <Timeline items={research} />
+        </section>
 
         {/* Education Section */}
         <section>
           <h2 className="text-4xl font-bold text-slate-800 dark:text-slate-100 mb-8 text-center">
             Education
           </h2>
-
-          <div className="relative">
-            <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-sky-200 dark:bg-sky-800" />
-
-            <div className="space-y-8">
-              {education.map((edu, index) => (
-                <div key={index} className="relative flex gap-6">
-                  <div className="relative z-10 flex-shrink-0">
-                    <div className="w-12 h-12 rounded-full bg-sky-100 dark:bg-sky-900 border-2 border-sky-400 dark:border-sky-500 flex items-center justify-center">
-                      <GraduationCap className="w-5 h-5 text-sky-600 dark:text-sky-400" />
-                    </div>
-                  </div>
-
-                  <div className="flex-1 bg-white dark:bg-slate-800 rounded-xl border border-sky-100 dark:border-slate-700 shadow-sm hover:shadow-md transition-shadow p-6">
-                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
-                      <div>
-                        <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100">
-                          {edu.title}
-                        </h3>
-                        <p className="text-sky-600 dark:text-sky-400 font-medium">
-                          {edu.organization}
-                        </p>
-                      </div>
-                      <div className="flex flex-col items-start sm:items-end gap-0.5 text-slate-500 dark:text-slate-400 text-sm">
-                        <div className="flex items-center gap-1.5 whitespace-nowrap">
-                          <Calendar className="w-4 h-4" />
-                          <span>{edu.startDate} – </span>
-                          <span className={edu.endDate === 'Present' ? 'text-sky-600 dark:text-sky-400 font-medium' : ''}>
-                            {edu.endDate}
-                          </span>
-                        </div>
-                        {edu.expected && (
-                          <span className="text-sky-600 dark:text-sky-400 font-medium text-xs">
-                            (Expected)
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          <Timeline items={education} education />
         </section>
       </div>
     </div>
