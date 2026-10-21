@@ -44,14 +44,14 @@ const education: ExperienceItem[] = [
     title: 'Bachelor of Science',
     organization: 'Northeastern University',
     startDate: '09/2023',
-    endDate: '06/2026',
+    endDate: '07/2027',
     description: 'Major in Mathematics and Applied Mathematics'
   },
   {
     title: 'Bachelor of Science',
     organization: 'University of Auckland',
     startDate: '07/2026',
-    endDate: 'Present',
+    endDate: '06/2027',
     description: 'Major in Mathematics'
   }
 ];
