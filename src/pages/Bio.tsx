@@ -1,6 +1,5 @@
 import { Mail, MapPin, GraduationCap, BookOpen, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 
 const Bio = () => {
@@ -10,15 +9,18 @@ const Bio = () => {
         {/* Hero Section */}
         <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start mb-16">
           <div className="flex-shrink-0">
-            <Avatar className="w-40 h-40 md:w-48 md:h-48 border-4 border-primary/10">
-              <picture>
-                <source srcSet="/avatar.webp" type="image/webp" />
-                <AvatarImage src="/avatar.jpg" alt="Dexuan Li" />
-              </picture>
-              <AvatarFallback className="text-4xl bg-primary/10 text-primary">
-                DR
-              </AvatarFallback>
-            </Avatar>
+            <picture className="block w-40 h-40 md:w-48 md:h-48 overflow-hidden rounded-full border-4 border-primary/10 bg-primary/10">
+              <source srcSet="/avatar-profile.webp" type="image/webp" />
+              <img
+                src="/avatar-profile.jpg"
+                alt="Dexuan Li"
+                width={384}
+                height={384}
+                loading="eager"
+                fetchPriority="high"
+                className="w-full h-full object-cover"
+              />
+            </picture>
           </div>
           
           <div className="flex-1 space-y-4">
